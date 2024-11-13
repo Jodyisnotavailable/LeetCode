@@ -3,9 +3,9 @@ public class Solution {
         long res = 0;
         Array.Sort(nums);
         
-        for (int i = 0; i < nums.Length; i ++) {
-            for (int j = i+1; j < nums.Length; j ++) {
-                if (lower <= nums[i]+nums[j] && nums[i]+nums[j] <= upper) {
+        for (int l = 0; l < nums.Length; l ++) {
+            for (int r = nums.Length-1; r > l; r --) {
+                if (lower <= nums[r]+nums[l] && nums[r]+nums[l] <= upper) {
                     res += 1;
                 }
             }
