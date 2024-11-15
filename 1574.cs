@@ -10,7 +10,6 @@ public class Solution {
         int res = rPt;
 
         //suffix or middle
-        rPt = arr.Length-1;
         while (rPt > lPt) {
             while (rPt < arr.Length && rPt > lPt+1 && arr[rPt] >= arr[rPt-1] && arr[rPt] >= arr[lPt]) {
                 rPt -= 1;
