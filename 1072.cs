@@ -5,7 +5,7 @@ public class Solution {
         for (int row = 0; row < matrix.Length; row ++) {
             string curRow = string.Join("", matrix[row]);
             string invRow = "";
-            //invert the row
+            //invert current row
             foreach (char chr in curRow) {
                 if (chr == '0') {
                     invRow += "1";
@@ -13,16 +13,13 @@ public class Solution {
                     invRow += "0";
                 }
             }
-            if (!count.ContainsKey(curRow) && !count.ContainsKey(invRow)) {
-                count.Add(curRow, 1);
+
+            if (count.ContainsKey(curRow)) {
+                count[curRow] += 1;
+            } else if (count.ContainsKey(invRow)) {
+                count[invRow] += 1;
             } else {
-                try{
-                    count[curRow] += 1;
-                }
-                catch (Exception e) {
-                    count[invRow] += 1;
-                }
-                    
+                count.Add(curRow, 1);
             }
         }
 
