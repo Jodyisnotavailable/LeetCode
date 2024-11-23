@@ -22,7 +22,8 @@ public class Solution {
                 if (res[i][j] == '*') lowestEmpty = i-1;
                 //if cell has rock, switch with lowest empty cell
                 if (res[i][j] == '#') {
-                    //the switch has to happen in this order or the cell that already has stone will lose the stone
+                    //the switch has to happen in this order
+                    //if the empty cell is applied after the stone then cell that already has stone will lose the stone bc it is switching with itself
                     res[i][j] = '.';
                     res[lowestEmpty][j] = '#';
                     lowestEmpty --;
