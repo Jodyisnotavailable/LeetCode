@@ -1,6 +1,32 @@
 public class Solution {
     public int[] FinalPrices(int[] prices) {
         int[] ans = new int[prices.Length];
+        Stack stack = new Stack(); //store index of vlaues
+
+        for (int i = 0; i < prices.Length; i ++) {
+            if (stack.Count == 0 || prices[i] > prices[(int)stack.Peek()]) {
+                stack.Push(i);
+            } else {
+                //if value of stored index is greater than or equal to current item
+                while (stack.Count != 0 && prices[i] <= prices[(int)stack.Peek()]) {
+                    int poppedIndex = (int)stack.Pop();
+                    ans[poppedIndex] = prices[poppedIndex]-prices[i];
+                }
+                stack.Push(i);
+            }
+            
+        }
+        //remaining values with no discount
+        while (stack.Count != 0) {
+            ans[(int)stack.Peek()] = prices[(int)stack.Peek()];
+            stack.Pop();
+        }
+
+        return ans;
+
+        //two pointer
+        /*
+        int[] ans = new int[prices.Length];
 
         int r = 1;
         for (int l = 0; l < prices.Length; l ++) {
@@ -23,5 +49,6 @@ public class Solution {
         }
 
         return ans;
+        */
     }
 }
