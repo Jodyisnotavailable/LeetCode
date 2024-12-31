@@ -9,9 +9,10 @@ public class Solution {
         while (heap.Count > 1) {
             int max1 = heap.Dequeue();
             int max2 = heap.Dequeue();
-            heap.Enqueue(max1-max2, max1-max2);
+            if (max1-max2 != 0) heap.Enqueue(max1-max2, max1-max2);
         }
         
+        if (heap.Count == 0) return 0;
         return heap.Peek();
     }
 }
